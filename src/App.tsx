@@ -184,6 +184,21 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 bg-[#0A1628]">
+      {/* Top Center Logo */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-8"
+      >
+        <img 
+          src="/logo.png" 
+          alt="Logo" 
+          className="h-16 md:h-20 w-auto object-contain"
+          referrerPolicy="no-referrer"
+          onError={(e) => (e.currentTarget.style.display = 'none')}
+        />
+      </motion.div>
+
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
