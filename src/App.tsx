@@ -167,26 +167,6 @@ export default function App() {
     }
   };
 
-  const handleFrameUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const dataUrl = event.target?.result as string;
-        setFrameImage(dataUrl);
-        setFrameError(false);
-        
-        const img = new Image();
-        img.src = dataUrl;
-        img.onload = () => {
-          frameImgRef.current = img;
-          drawCanvas();
-        };
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleDownload = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -306,30 +286,6 @@ export default function App() {
                     </div>
                   </div>
                 </motion.div>
-              )}
-
-              {/* Frame Upload (Fallback) */}
-              {frameError && (
-                <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl space-y-3">
-                  <div className="flex items-start gap-3 text-orange-400">
-                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                    <div className="text-xs font-orbitron">
-                      <p className="font-bold uppercase tracking-widest">Frame Missing</p>
-                      <p className="opacity-70">Please upload 'frame.png' to continue.</p>
-                    </div>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleFrameUpload}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                    />
-                    <button className="w-full py-2 px-4 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-xs font-bold font-orbitron transition-colors uppercase tracking-widest">
-                      Upload Frame
-                    </button>
-                  </div>
-                </div>
               )}
             </div>
 
