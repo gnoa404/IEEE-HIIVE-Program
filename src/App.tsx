@@ -347,6 +347,7 @@ export default function App() {
           <span className="font-bold text-teal-400">IEEE SIGHT Egypt Section</span>
         </div>
         <p className="opacity-50">Where Technology serves Humanity</p>
+        <p className="mt-2 text-teal-500/60 font-bold">Designed by Omar Magdy</p>
       </footer>
     </div>
   );
